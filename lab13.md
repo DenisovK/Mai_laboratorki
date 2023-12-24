@@ -17,26 +17,41 @@
 #include <ctype.h>
 
 int main() {
-    FILE *file;
-    file = fopen("words.txt", "r");
-
-    if (file != NULL) {
-        int count = 0;
-        char word[50];
-
-        while (fscanf(file, "%s", word) == 1) {
-            int consonant_count = 0;
-            for (int i = 0; word[i] != '\0'; i++) {
-                if (isalpha(word[i]) && !strchr("aeiouAEIOU", word[i])) {
-                    consonant_count++;
+    char stroka[100];
+    printf("Введите строку: ");
+    fgets(stroka, 100, stdin);
+    
+    char* text[20];
+    int counter_sogl = 0;
+    char* alp = "aeuioyуеыаоэяиё";
+    
+    char* token = strtok(stroka, " ,;");
+    int i = 0;
+    while (token != NULL) {
+        text[i++] = token;
+        token = strtok(NULL, " ,;");
+    }
+    
+    for (int k = 0; k < i; k++) {
+        counter_sogl = 0;
+        char* sogl = "qwrtpsdfghjklzxcvbnmйцкнгшщзхфвпрлджчсмтьбюъ";
+        for (int j = 0; j < strlen(text[k]); j++) {
+            if (strchr(alp, tolower(text[k][j])) == NULL) {
+                if (strchr(sogl, tolower(text[k][j])) != NULL) {
+                    sogl = text[k] + j;
+                    if (counter_sogl <= 1) {
+                        counter_sogl = 1;
+                    }
+                } else {
+                    counter_sogl = 100;
+                    break;
                 }
             }
-            if (consonant_count == 1) {
-                count++;
-            }
         }
-        printf("Количество слов с ровно одной согласной буквой: %d\n", count);
-        fclose(file);
+        if (counter_sogl == 1) {
+            printf("Есть слова с 1 согласной\n");
+            break;
+        }
     }
 
     return 0;
