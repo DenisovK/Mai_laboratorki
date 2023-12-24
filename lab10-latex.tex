@@ -1,1 +1,76 @@
+\documentclass[10pt]{article} 
+\usepackage{amsmath,amsthm,amssymb} 
+%\usepackage{mathtext} 
+\usepackage[T1,T2A]{fontenc} 
+\usepackage[utf8]{inputenc} 
+\usepackage[english, russian]{babel} 
+\usepackage{setspace} 
+\usepackage{geometry} 
+\geometry{b5paper, textwidth=300pt, top=70pt, left=83pt, right=83pt, bottom=50pt} 
+\usepackage{ragged2e} 
+\usepackage{tikz} 
+\setlength{\parindent}{16pt} 
+\setlength{\baselineskip}{11pt} 
+\setlength{\lineskip}{5pt} 
+\setlength{\lineskiplimit}{3pt} 
+\thispagestyle{empty} 
+%\usepackage{parskip} 
+%\usefont{T2A}{PTSerifCaption-TLF}{m}{n} 
+%\usepackage{bookman} 
+\usepackage{tempora} 
+\renewcommand{\rmdefault}{PTSerifCaption-TLF} 
+%\renewcommand{\rmdefault}{bookman} 
+%\usepackage{lh-lcy} 
+\justifying 
+\begin{document} 
+%    \leftskip 0pt plus 1fill 
+%    \rightskip 0pt plus 1fill 
+%    \vspace{20pt} 
+%    {\fontfamily{Schoolbook}\selectfont 
+    \noindent свойству $2^{0}$. Это непосредственно следует из определения \linebreak 
+    бесконечного предела функции, сформулированного в тер-\linebreak 
+    минах неравенств. А именно: $\lim _{x \rightarrow x_{0}} f(x)=\infty$ (соответственно\linebreak
+    $+\infty$ или $-\infty$ ) означает, что для любого $c>0$ существует та-\linebreak
+     кая окрестность $U\left(x_{0}\right)$ точки $x_{0}$, что для всех $x \in X \cap U\left(x_{0}\right)$\linebreak
+    выполняется неравенство $|f(x)|>c$ (соответственно неравен-\linebreak
+    ство $f(x)>c$ или $f(x)<-c)$.\\
+    
+    $3^{0}$. \textit{Если} $f(x)=c$ \textit{ - постоянная,} $x \in X$\textit{, то }$\lim _{x \rightarrow x_{0}} f(x)=c$.
+
+    $4^{0}$. \textit{Если $f(x) \geqslant a, x \in X$, с существует конечный или оп-}\linebreak
+    \textit{ределенного знака бесконечный предел $\lim _{x \rightarrow x_{0}} f(x)$, то}
+    
+    \[\large{\lim _{x \rightarrow x_{0}} f(x) \geqslant a} \eqno(5.37)\]
+    \\
+    \\
+    $5^{0}$ \textit{ $\varphi(x) \leqslant f(x) \leqslant \psi(x), x \in X$, и существуют конеч-}\linebreak
+    \textit{ные или определенного знака бесконечные пределы}\linebreak
+    $\lim _{x \rightarrow x_{0}} \varphi(x)=\lim _{x \rightarrow x_{0}} \psi(x)=a$, \textit{mo}
+
+    \[\large{\lim _{x \rightarrow x_{0}} f(x)=a .} \eqno(5.38)\] 
+    \\
+    \\
+    $6^{0}$. \textit{Если существуют конечные пределы $\lim _{x \rightarrow x_{0}} f(x) \quad u$}\linebreak
+    \textit{$\lim _{x \rightarrow x_{0}} g(x)$, то существуют и конечные пределы $\lim _{x \rightarrow x_{0}}[f(x)+$}\linebreak
+    \textit{$+g(x)], \lim _{x \rightarrow x_{0}} f(x) g(x)$, а если $\lim _{x \rightarrow x_{0}} g(x) \neq 0$, то и предел}\linebreak
+    \textit{$\lim _{x \rightarrow x_{0}} \frac{f(x)}{g(x)}$, причем}
+`   $$
+    \begin{gathered}
+    \linebreak
+    \centering{\[\large{\lim _{x \rightarrow x_{0}}[f(x)+g(x)]=\lim _{x \rightarrow x_{0}} f(x)+\lim _{x \rightarrow x_{0}} g(x),} \eqno(5.39)\]}\linebreak
+
+    \centering{\[\large{\lim _{x \rightarrow x_{0}} f(x) g(x)=\lim _{x \rightarrow x_{0}} f(x) \lim _{x \rightarrow x_{0}} g(x),} \eqno(5.40)\]}\linebreak
+    
+    \centering{\[\large{\lim _{x \rightarrow x_{0}} \frac{f(x)}{g(x)}=\frac{\lim _{x \rightarrow x_{0}} f(x)}{\lim _{x \rightarrow x_{0}} g(x)} . } \eqno(5.41)\]}
+    \end{gathered}
+$$
+%    \setlength{\lineskip}{5pt plus5pt minus5pt} 
+    \normalsize 
+    \centerline{ 
+        \begin{tikzpicture} 
+            \draw (0,0) -- (1.75,0); 
+        \end{tikzpicture} 
+    }\\ 
+    \centerline{\textit{191}} 
+\end{document}
 
