@@ -12,23 +12,41 @@
 3. **Заданиe**: №25
 4. **Протокол**:
 ```
-include <stdio.h>
+#include <stdio.h>
 
-int main() {                  
-    FILE *file;
-    file = fopen("numbers.txt", "r+");
-    if (file != NULL) {
-        int num;
-        while (fscanf(file, "%d", &num) == 1) {
-            if (num % 2 == 0 && num != 0) {
-                num--;
-                fseek(file, -1, SEEK_CUR);
-                fprintf(file, "%d", num);
+int main() {
+    int number;
+    printf("Введите число: ");
+    scanf("%d", &number);
+
+    int result = 0;
+    int multiplier = 1;
+    if (number>0){
+        while (number > 0) {
+            int digit = number % 10;
+            if (digit % 2 == 0) {
+                digit -= 1;
             }
-            printf("%d ", num);
+            result += digit * multiplier;
+            multiplier *= 10;
+            number /= 10;
         }
-        fclose(file);
-    } 
+        printf("Результат: %d\n", result);
+    }
+    else{
+        number=-number;
+        while (number > 0) {
+            int digit = number % 10;
+            if (digit % 2 == 0) {
+                digit -= 1;
+            }
+            result += digit * multiplier;
+            multiplier *= 10;
+            number /= 10;
+        }
+        printf("Результат: %d\n", -result);
+    }
+
 
     return 0;
 }
