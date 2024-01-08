@@ -16,46 +16,60 @@
 #include <string.h>
 #include <ctype.h>
 
-int is_consonant(char c) {
-    c = tolower(c);
-    return (c >= 'b' && c <= 'd') || (c >= 'f' && c <= 'h') || (c >= 'j' && c <= 'n') || (c >= 'p' && c <= 't') || (c >= 'v' && c <= 'z');
+short int check(char a)
+{
+    a = tolower(a);
+    if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u' || a == 'y')
+        return 2;
+    if (a == ' ' || a == '\n' || a == '\t' || a == ',')
+        return 0;
+    if (isdigit(a))
+        return -1;
+    else
+        return 1;
 }
 
-int main() {
+int main()
+{
     char input[100];
     printf("Enter a string: ");
     fgets(input, sizeof(input), stdin);
-    
-    int consonant_count = 0;
+
     int word_count = 0;
-    
+
     char *token = strtok(input, " \n");
-    while (token != NULL) {
+    while (token != NULL)
+    {
+        int consonant_count = 0;
         int consonant_set[26] = {0};
-        int has_single_consonant = 1;
-        
-        for (int i = 0; i < strlen(token); i++) {
-            if (is_consonant(token[i])) {
+
+        for (int i = 0; i < strlen(token); i++)
+        {
+            if (check(token[i]) == 1)
+            {
                 consonant_set[token[i] - 'a']++;
-                if (consonant_set[token[i] - 'a'] > 1) {
-                    has_single_consonant = 0;
+                if (consonant_set[token[i] - 'a'] > 1)
+                {
                     break;
                 }
+                consonant_count++;
             }
         }
-        
-        if (has_single_consonant) {
-            consonant_count=1;
+
+        if (consonant_count == 1)
+        {
+            word_count++;
         }
-        
-        word_count++;
         token = strtok(NULL, " \n");
     }
-    if (consonant_count == 1){
-    printf("Есть слова ровно с 1 согласной");
+
+    if (word_count > 0)
+    {
+        printf("Есть слова с 1 согласной");
     }
-    if (consonant_count != 1){
-    printf("Таких слов нет");
+    else
+    {
+        printf("Таких слов нет.\n");
     }
     return 0;
 }
