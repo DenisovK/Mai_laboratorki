@@ -14,63 +14,56 @@
 ```
 #include <stdio.h>
 #include <string.h>
-#include <ctype.h>
 
-short int check(char a)
-{
-    a = tolower(a);
-    if (a == 'a' || a == 'e' || a == 'i' || a == 'o' || a == 'u' || a == 'y')
-        return 2;
-    if (a == ' ' || a == '\n' || a == '\t' || a == ',')
-        return 0;
-    if (isdigit(a))
-        return -1;
-    else
+int opred(char letter) {
+    if (letter == 'a' || letter == 'e' || letter == 'i' || letter == 'o' || letter == 'u' || letter == 'y') {
         return 1;
+    }
+    if (letter == ' ' || letter == ',') {
+        return 0;
+    } else {
+        return -1;
+    }
 }
 
-int main()
-{
+int main() {
     char input[100];
-    printf("Enter a string: ");
-    fgets(input, sizeof(input), stdin);
+    fgets(input, 100, stdin);
 
-    int word_count = 0;
+    char *token = strtok(input, " ");
+    int found = 0;
 
-    char *token = strtok(input, " \n");
-    while (token != NULL)
-    {
-        int consonant_count = 0;
-        int consonant_set[26] = {0};
+    while (token != NULL) {
+        char letter = '\0';
+        int counter_letters = 0;
+        int sogl = 0;
 
-        for (int i = 0; i < strlen(token); i++)
-        {
-            if (check(token[i]) == 1)
-            {
-                consonant_set[token[i] - 'a']++;
-                if (consonant_set[token[i] - 'a'] > 1)
-                {
-                    break;
+        for (int i = 0; i < strlen(token); i++) {
+            if (opred(token[i]) == -1 && counter_letters != 0) {
+                if (token[i] != letter) {
+                    sogl++;
                 }
-                consonant_count++;
+            }
+            if (opred(token[i]) == -1 && counter_letters == 0) {
+                letter = token[i];
+                sogl = 1;
+                counter_letters++;
             }
         }
 
-        if (consonant_count == 1)
-        {
-            word_count++;
+        if (sogl == 1) {
+            printf("Есть слова с 1 согласной\n");
+            found = 1;
+            break;
         }
-        token = strtok(NULL, " \n");
+
+        token = strtok(NULL, " ");
     }
 
-    if (word_count > 0)
-    {
-        printf("Есть слова с 1 согласной");
+    if (!found) {
+        printf("Нет слов с 1 согласной\n");
     }
-    else
-    {
-        printf("Таких слов нет.\n");
-    }
+
     return 0;
 }
 ```
